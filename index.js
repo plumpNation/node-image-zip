@@ -10,7 +10,7 @@ let files = [];
 
 // Add whatever type of files are expected to be allowed.
 // Directories can have all sorts of files in them.
-const whitelist = ['.jpg', '.jpeg', '.png'];
+const blacklist = ['.DS_Store'];
 
 try {
   files = fs.readdirSync(directoryPath);
@@ -26,7 +26,7 @@ files
   .filter(file => {
     const extension = path.extname(file);
 
-    return whitelist.indexOf(extension) > -1;
+    return blacklist.indexOf(extension) > -1;
   })
   .forEach(file => {
     console.log(`adding ${file} to zip`);
